@@ -2,10 +2,7 @@
 
 Material didáctico que conecta la **definición formal de una gramática
 libre de contexto** —tal como se presenta en la bibliografía clásica de
-compiladores— con su **implementación concreta en Python**. El contenido
-proviene de `Gramaticas.ipynb` y fue reorganizado en `codigo/` como una
-colección de scripts independientes, uno por concepto, pensados para ser
-citados individualmente desde artículos o apuntes de clase.
+compiladores— con su **implementación concreta en Python**.
 
 ## Motivación
 
@@ -32,18 +29,8 @@ recorre ambos problemas de forma incremental:
 2. Cómo verificar mecánicamente si una gramática está **limpia**, **bien
    formada**, y si es apta para un **descenso recursivo predictivo** (sin
    recursión izquierda, factorizada por izquierda).
-3. Un prototipo (deliberadamente incompleto) de generación de una
-   derivación, útil como caso de estudio de los límites de un enfoque
-   ingenuo.
+3. Un prototipo de generación de una derivación.
 
-## Estructura del repositorio
-
-```
-compiladores-teoria-y-practica/
-├── Gramaticas.ipynb   # Notebook original, fuente de todo el código
-├── README.md          # Este archivo
-└── codigo/            # Los mismos contenidos, separados por concepto
-```
 
 ## Contenido de `codigo/`
 
@@ -67,10 +54,7 @@ compiladores-teoria-y-practica/
 | `p16_probar_gramaticas_ejemplo.py` | Corre el validador integral sobre las nueve gramáticas de ejemplo. |
 | `p17_derivacion_experimental.py` | Prototipo incompleto de generación de una derivación; documenta sus límites conocidos (no detecta ciclos, no explora todas las alternativas). |
 
-Los archivos están numerados en el orden en que conviene leerlos (siguen
-la progresión del notebook original) y cada uno tiene un docstring con
-una explicación breve del concepto y la referencia a las celdas de origen
-en `Gramaticas.ipynb`.
+Los archivos están numerados en el orden en que conviene leerlos y cada uno tiene un docstring con una explicación breve del concepto.
 
 ## Cómo ejecutar
 
@@ -79,34 +63,9 @@ archivo es ejecutable de forma independiente desde el directorio
 `codigo/`:
 
 ```bash
-cd codigo
 python3 p02_gramatica_tupla_formal.py
 python3 p16_probar_gramaticas_ejemplo.py
 ```
 
 Los archivos que dependen de otros (por ejemplo, los validadores) usan
-imports directos entre sí (`from p08_gramatica_modelo_quintupla import G1`),
-por lo que deben ejecutarse desde dentro de `codigo/` o con esa carpeta en
-el `PYTHONPATH`.
-
-## Uso como referencia en papers
-
-Cada archivo es una unidad autocontenida de un solo concepto, pensada
-para citarse como listado de código. Por ejemplo, en LaTeX:
-
-```latex
-\lstinputlisting[language=Python, caption={Validador de gramática limpia}]
-  {codigo/p11_validador_gramatica_limpia.py}
-```
-
-La numeración (`p01` … `p17`) es estable: si se agregan nuevos temas,
-conviene continuar la numeración en vez de reordenar los existentes, para
-no invalidar referencias ya publicadas.
-
-## Origen
-
-El contenido es una reorganización de `Gramaticas.ipynb`, un notebook de
-cátedra sobre tratamiento de gramáticas formales en Python. Se preservó
-la lógica original de cada función; la única corrección aplicada fue un
-error de referencia de variable en el mensaje de diagnóstico de
-`RevisaEstructuraConceptual` (`p10`).
+imports directos entre sí (`from p08_gramatica_modelo_quintupla import G1`).
